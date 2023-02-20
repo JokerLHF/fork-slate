@@ -461,15 +461,6 @@ export const Path: PathInterface = {
 
           return copy.concat(p.slice(op.length))
         } else if (
-          Path.isSibling(op, onp) &&
-          (Path.isAncestor(onp, p) || Path.equals(onp, p))
-        ) {
-          if (Path.endsBefore(op, p)) {
-            p[op.length - 1] -= 1
-          } else {
-            p[op.length - 1] += 1
-          }
-        } else if (
           Path.endsBefore(onp, p) ||
           Path.equals(onp, p) ||
           Path.isAncestor(onp, p)
@@ -480,9 +471,6 @@ export const Path: PathInterface = {
 
           p[onp.length - 1] += 1
         } else if (Path.endsBefore(op, p)) {
-          if (Path.equals(onp, p)) {
-            p[onp.length - 1] += 1
-          }
 
           p[op.length - 1] -= 1
         }
